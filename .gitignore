@@ -1,0 +1,10 @@
+# Gradle
+build
+/.gradle
+
+# .idea
+.idea
+
+# Testing
+/src/test/
+/src/database

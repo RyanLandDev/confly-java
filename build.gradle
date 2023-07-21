@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'maven-publish'
+}
+
+group 'net.ryanland'
+version '1.0.0'
+mainClassName = 'net.ryanland.confly.Confly'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    // json
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'net.ryanland'
+            artifactId = 'confly-java'
+            version = version
+
+            from components.java
+        }
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
